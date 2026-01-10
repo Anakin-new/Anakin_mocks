@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="google" content="notranslate">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Exam Center - Bloom</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="mocks.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body class="dark-mode">
+    <div class="exam-wrapper">
+        <header class="exam-header">
+            <div class="timer-box">
+                <span class="icon">⏱️</span>
+                <span id="timer">00:00</span>
+            </div>
+            <div class="header-right">
+                <button class="exit-btn" onclick="exitTest()">Exit</button>
+                <button class="submit-top-btn" onclick="submitTest()">Submit</button>
+            </div>
+        </header>
+
+        <nav class="subject-tabs" id="subject-tabs" style="display: none;">
+            <button class="tab-btn" id="tab-Maths" onclick="switchSection('Maths')">Maths</button>
+            <button class="tab-btn" id="tab-Reasoning" onclick="switchSection('Reasoning')">Reasoning</button>
+            <button class="tab-btn" id="tab-GS" onclick="switchSection('GS')">GS</button>
+            <button class="tab-btn" id="tab-English" onclick="switchSection('English')">English</button>
+        </nav>
+
+        <main class="question-container">
+            <div class="q-header">
+                <span class="q-number">Question <span id="current-q-num">1</span></span>
+                <span class="q-subject-tag" id="q-subject-display">General</span>
+            </div>
+            <div class="q-card">
+                <p id="question-text" class="q-text">Gathering questions from the garden...</p>
+                <div id="options-container" class="options-vertical"></div>
+            </div>
+        </main>
+
+        <footer class="exam-footer">
+            <button class="nav-btn-outline" id="prev-btn" onclick="prevQuestion()">Back</button>
+            <button class="nav-btn-outline mark-btn" onclick="markForReview()">Mark</button>
+            <button class="palette-trigger" onclick="togglePalette()">⣿ Map</button>
+            <button class="nav-btn-solid" id="next-btn" onclick="nextQuestion()">Save & Next</button>
+        </footer>
+
+        <div id="palette-modal" class="palette-modal">
+            <div class="palette-content">
+                <div class="palette-header">
+                    <h3>Question Map</h3>
+                    <button class="close-pal-btn" onclick="togglePalette()">✕</button>
+                </div>
+                <div class="legend">
+                    <span><i class="dot answered"></i> Done</span>
+                    <span><i class="dot marked"></i> Review</span>
+                    <span><i class="dot"></i> Pending</span>
+                </div>
+                <div class="grid" id="palette-grid"></div>
+            </div>
+        </div>
+    </div>
+    <script src="mocks.js"></script>
+</body>
+</html>

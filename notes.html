@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="google" content="notranslate">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Garden - Notes</title>
+    <link rel="stylesheet" href="notes.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body class="dark-mode">
+    <div class="notes-wrapper">
+        <header class="notes-header">
+            <button onclick="window.location.href='dashboard.html'">←</button>
+            <h1>Study Garden 🌸</h1>
+        </header>
+
+        <div class="filter-bar">
+            <button class="filter-btn active" onclick="filterNotes('all')">All</button>
+            <button class="filter-btn" onclick="filterNotes('pdf')">PDFs</button>
+            <button class="filter-btn" onclick="filterNotes('video')">Videos</button>
+        </div>
+
+        <div class="notes-grid" id="notes-grid">
+            </div>
+    </div>
+    <div id="video-modal" class="video-modal">
+    <div class="modal-content">
+        <button class="close-modal" onclick="closeVideo()">✕ Close</button>
+        <div class="video-container">
+            <iframe id="youtube-player" src="" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <h3 id="modal-title">Lecture Title</h3>
+          </div>
+       </div>
+    <script src="notes.js"></script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+body {
+    margin: 0; background: #1a1617; font-family: 'Quicksand', sans-serif;
+    color: white; min-height: 100vh;
+}
+.selection-container { padding: 20px; max-width: 450px; margin: 0 auto; }
+
+.selection-header {
+    display: flex; align-items: center; gap: 15px; margin-bottom: 30px;
+}
+.back-btn {
+    background: none; border: none; color: #ffafbd; font-size: 1.5rem;
+}
+#view-title { color: #ffafbd; margin: 0; font-size: 1.4rem; }
+
+/* Path Cards for Level 1 */
+.path-card {
+    background: #251f20; border: 1px solid #3d2b2e;
+    padding: 25px; border-radius: 25px; margin-bottom: 15px;
+    display: flex; align-items: center; gap: 20px;
+    cursor: pointer; transition: 0.3s;
+}
+.path-card:active { transform: scale(0.96); border-color: #ff8fa3; }
+.path-card .icon { font-size: 2rem; }
+.path-card h3 { margin: 0; color: #e8f5e9; font-size: 1.1rem; }
+.path-card p { margin: 5px 0 0; color: #888; font-size: 0.85rem; }
+
+/* Grid for Subjects/Chapters */
+.item-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+}
+.grid-item {
+    background: #2d2426; border: 1px solid #3d2b2e;
+    padding: 20px; border-radius: 20px; text-align: center;
+    color: #ffafbd; font-weight: bold; cursor: pointer;
+}
+.grid-item:active { background: #3d2b2e; border-color: #ff8fa3; }

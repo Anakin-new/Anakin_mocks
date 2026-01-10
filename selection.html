@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="google" content="notranslate">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Select Your Goal - Bloom</title>
+    <link rel="stylesheet" href="selection.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body class="dark-mode">
+    <div class="selection-container">
+        <header class="selection-header">
+            <button class="back-btn" onclick="window.location.href='dashboard.html'">←</button>
+            <h2 id="view-title">Choose Mode</h2>
+        </header>
+
+        <div id="mode-view" class="view-panel">
+            <div class="path-card" onclick="showFullMocks()">
+                <span class="icon">🏆</span>
+                <div class="info">
+                    <h3>Full Length Mocks</h3>
+                    <p>100 Questions • 60 Mins</p>
+                </div>
+            </div>
+            <div class="path-card" onclick="showSubjects()">
+                <span class="icon">🌿</span>
+                <div class="info">
+                    <h3>Subject-wise Tests</h3>
+                    <p>Focus on your weak areas</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="list-view" class="view-panel" style="display: none;">
+            <div class="item-grid" id="item-grid">
+                </div>
+        </div>
+    </div>
+
+    <script src="selection.js"></script>
+</body>
+</html>

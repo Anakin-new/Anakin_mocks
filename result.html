@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="google" content="notranslate">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Result - Bloom</title>
+    <link rel="stylesheet" href="result.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <div class="result-container">
+        <div class="score-header">
+            <div class="score-circle">
+                <h1 id="final-score">0/0</h1>
+                <p id="accuracy-percent">0% Accuracy</p>
+            </div>
+            <h2 id="result-message">Great effort! 🌿</h2>
+        </div>
+
+        <div class="stats-row">
+            <div class="stat-card correct">
+                <span class="stat-val" id="correct-count">0</span>
+                <span class="stat-label">Correct</span>
+            </div>
+            <div class="stat-card wrong">
+                <span class="stat-val" id="wrong-count">0</span>
+                <span class="stat-label">Wrong</span>
+            </div>
+        </div>
+
+        <div class="review-section">
+            <h3>Question Review</h3>
+            <div id="review-list" class="review-list">
+                </div>
+        </div>
+
+        <div class="result-actions">
+            <button class="home-btn" onclick="window.location.href='dashboard.html'">Back to Garden</button>
+        </div>
+    </div>
+    <script src="result.js"></script>
+</body>
+</html>

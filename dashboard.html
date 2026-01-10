@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="google" content="notranslate">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Dashboard - Bloom</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body class="forest-bg">
+    <div id="side-drawer" class="drawer">
+        <div class="drawer-header">
+            <h3>Menu</h3>
+            <button class="close-btn" onclick="toggleMenu()">✕</button>
+        </div>
+        <nav class="drawer-links">
+            <a href="selection.html"><span>📝</span> &nbsp; Mock Tests</a>
+            <a href="leaderboard.html"><span>🏆</span> &nbsp; Leaderboard</a>
+            <a href="notes.html"><span>📖</span> &nbsp; Study Notes</a>
+            <a href="profile.html"><span>💂‍♀️</span> &nbsp; My Profile</a>
+            <hr>
+            <button class="drawer-exit" onclick="handleLogout()">Log out</button>
+        </nav>
+    </div>
+    <div id="overlay" onclick="toggleMenu()"></div>
+
+    <div class="dash-container">
+        <header class="user-header">
+            <button class="menu-trigger" onclick="toggleMenu()">☰</button>
+            <div class="greeting-text">
+                <h1>Hello, <span id="username-display">Warrior</span> 🌿</h1>
+            </div>
+            <div class="header-spacer"></div> 
+        </header>
+
+        <div class="glass-card score-screen">
+            <div class="card-tag">Latest Result</div>
+            <span class="big-score" id="last-score">--</span>
+            <p id="last-mock-name">Keep growing!</p>
+        </div>
+
+        <div class="motivation-panel">
+            <div class="panel-icon">✨</div>
+            <div class="panel-content">
+                <p id="daily-quote">"Focus on progress, not perfection."</p>
+            </div>
+        </div>
+
+        <div class="announcement-panel">
+            <div class="panel-header">
+                <div class="updates-header">
+    <h3>SSC Updates</h3>
+    <div class="live-tag">
+        <span class="red-dot"></span>
+        LIVE
+    </div>
+</div>
+            </div>
+            <div id="ssc-news" class="news-content">
+                <p class="news-item">Checking for updates... ⏳</p>
+            </div>
+            <button class="news-link" onclick="window.open('https://ssc.gov.in/', '_blank')">Official Site ↗</button>
+        </div>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>

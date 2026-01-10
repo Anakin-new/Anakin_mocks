@@ -1,0 +1,21 @@
+* {
+    /* Text selection ko band karne ke liye */
+    -webkit-user-select: none; /* Safari/Chrome */
+    -moz-user-select: none;    /* Firefox */
+    -ms-user-select: none;     /* IE10+ */
+    user-select: none;         /* Standard */
+
+    /* Mobile par long-press menu (copy/save image) band karne ke liye */
+    -webkit-touch-callout: none;
+    
+    /* Highlight color jo pehle discuss kiya tha */
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Lekin, Input boxes mein typing allowed honi chahiye! */
+input, textarea {
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+}

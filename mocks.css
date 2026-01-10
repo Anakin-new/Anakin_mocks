@@ -1,0 +1,165 @@
+/* Update these specific sections in mocks.css */
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Prevents the whole page from bouncing */
+}
+
+body { 
+    background-color: #0d0f0d; 
+    color: #e0e0e0; 
+    display: flex;
+    flex-direction: column;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.exam-wrapper { 
+    height: 100dvh; /* 'dvh' is Dynamic Viewport Height - fixes mobile browser bar issues */
+    display: flex; 
+    flex-direction: column; 
+}
+
+/* Make sure the question container is the only part that scrolls */
+.question-container { 
+    flex: 1; 
+    overflow-y: auto; 
+    padding: 20px;
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+}
+
+/* Ensure the footer stays at the very bottom and doesn't shrink */
+.exam-footer { 
+    flex-shrink: 0; 
+    padding: 12px 10px 25px; /* Comfortable bottom spacing */
+    display: flex; 
+    gap: 8px; 
+    background: #121412; 
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Header */
+.exam-header {
+    background: #121412;
+    padding: 12px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.timer-box { 
+    background: rgba(255, 175, 189, 0.1);
+    padding: 6px 14px;
+    border-radius: 12px;
+    color: #ffafbd; 
+    font-weight: 700; 
+    font-family: monospace;
+    font-size: 1.1rem;
+}
+
+.exit-btn { background: transparent; border: none; color: #666; font-weight: 600; cursor: pointer; }
+.submit-top-btn {
+    background: rgba(168, 213, 162, 0.1); border: 1px solid #a8d5a2;
+    color: #a8d5a2; padding: 6px 15px; border-radius: 10px; font-weight: 700; cursor: pointer;
+}
+
+/* Tabs */
+.subject-tabs { 
+    background: #121412; display: flex; overflow-x: auto; 
+    white-space: nowrap; border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    scrollbar-width: none;
+}
+.subject-tabs::-webkit-scrollbar { display: none; }
+
+.tab-btn { 
+    padding: 18px 25px; 
+    font-size: 0.9rem; 
+    letter-spacing: 0.5px;
+    background-color: #121412;
+    color: white;
+}
+.tab-btn.active { color: #ffafbd; }
+
+/* Question Area */
+.question-container { flex: 1; overflow-y: auto; padding: 20px; }
+.q-header { display: flex; justify-content: space-between; margin-bottom: 15px; }
+.q-number { font-weight: 700; color: #ffafbd; font-size: 1.1rem; }
+.q-subject-tag { background: rgba(255,255,255,0.05); padding: 2px 10px; border-radius: 8px; font-size: 0.75rem; color: #888; }
+.q-text { font-size: 1.1rem; line-height: 1.6; margin-bottom: 25px; color: #efefef; }
+
+/* Option Buttons */
+.option-btn {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #ffffff; 
+    padding: 18px 20px; /* More vertical padding */
+    border-radius: 16px;
+    margin-bottom: 12px; 
+    width: 100%; 
+    font-size: 1.05rem; /* Larger text */
+    font-weight: 500;
+}
+.option-btn.selected {
+    background: rgba(255, 175, 189, 0.15); border-color: #ffafbd; color: #ffafbd;
+}
+
+/* Footer Navigation */
+.exam-footer { 
+    padding: 15px 15px 30px; display: flex; gap: 8px; 
+    background: #121412; border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+.nav-btn-solid { 
+    background: #ffafbd; 
+    color: #4a2c31; 
+    flex: 1.5; /* Slightly wider than others */
+    height: 50px; 
+    border-radius: 12px; 
+    font-weight: 800; 
+    border: none;
+    font-size: 1rem;
+    box-shadow: 0 4px 15px rgba(255, 175, 189, 0.2);
+}
+.nav-btn-outline, .palette-trigger { 
+    background: rgba(255,255,255,0.07); 
+    border: 1px solid rgba(255,255,255,0.15); 
+    color: #efefef; 
+    flex: 1; /* Equal width for these three */
+    height: 50px; /* Force a decent height */
+    border-radius: 12px; 
+    font-weight: 700; 
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+.mark-btn { color: #c3a2d5 !important; border-color: rgba(195, 162, 213, 0.3) !important; }
+
+/* Palette Modal (Bottom Sheet) */
+.palette-modal {
+    display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.8);
+    backdrop-filter: blur(5px); z-index: 2000; align-items: flex-end;
+}
+.palette-content {
+    background: #181b18; width: 100%; border-radius: 30px 30px 0 0; 
+    padding: 25px; max-height: 75vh; overflow-y: auto;
+}
+.palette-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+.close-pal-btn { background: none; border: none; color: #888; font-size: 1.5rem; }
+
+.grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+.dot {
+    height: 45px; display: flex; align-items: center; justify-content: center;
+    border-radius: 12px; background: rgba(255,255,255,0.05); color: #888; font-weight: 700;
+}
+
+/* Dot States */
+.dot.answered { background: #a8d5a2; color: #121412; }
+.dot.marked { background: #c3a2d5; color: #121412; }
+
+.legend { display: flex; flex-wrap: wrap; gap: 15px; margin-bottom: 15px; font-size: 0.8rem; color: #888; }
+.legend span { display: flex; align-items: center; }
+.legend .dot { height: 12px; width: 12px; margin-right: 6px; }

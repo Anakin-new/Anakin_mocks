@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="google" content="notranslate">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warrior Profile - Bloom</title>
+    <link rel="stylesheet" href="profile.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body class="dark-mode">
+    <div class="profile-wrapper">
+        <header class="profile-header">
+            <button class="back-btn" onclick="window.location.href='dashboard.html'">←</button>
+            <h1>Your Journey 🌿</h1>
+        </header>
+
+        <section class="stats-overview">
+            <div class="stat-box">
+                <h2 id="total-tests">0</h2>
+                <p>Tests Taken</p>
+            </div>
+            <div class="stat-box">
+                <h2 id="avg-score">0%</h2>
+                <p>Avg. Accuracy</p>
+            </div>
+        </section>
+
+        <section class="history-section">
+            <h3>Recent History</h3>
+            <div id="history-list" class="history-list">
+                <p class="loading">Loading your achievements...</p>
+            </div>
+        </section>
+
+        <button class="clear-btn" onclick="clearHistory()">Reset History</button>
+    </div>
+
+    <script src="profile.js"></script>
+</body>
+</html>

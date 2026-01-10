@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#4A90E2">
+    <meta charset="UTF-8">
+    <meta name="google" content="notranslate">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Bloom & Achieve</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="mobile-container">
+        <div class="flower-header">🌸✨🌿</div>
+        <h1 class="brand">Goal - SSC</h1>
+        <div class="card">
+            <p class="welcome-text">Your cozy space for SSC prep. Let's turn your goals into a beautiful reality, one mock at a time.</p>
+            <button class="primary-btn" onclick="window.location.href='login.html'">Enter</button>
+        </div>
+        <p class="footer-text">Created by Anakin with love 🤍</p>
+    </div>
+    <script>
+        if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then(reg => console.log('Service Worker: Registered'))
+      .catch(err => console.log(`Service Worker: Error: ${err}`));
+  });
+}
+    </script>
+</body>
+</html>

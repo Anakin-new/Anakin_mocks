@@ -1,0 +1,136 @@
+body {
+    margin: 0;
+    background-color: #121412; /* Deep Charcoal Forest */
+    font-family: 'Quicksand', sans-serif;
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh;
+    color: white;
+}
+
+/* Fixed Floating Back Button */
+.floating-back {
+    position: absolute;
+    top: 25px;
+    left: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #ffafbd;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: 0.3s;
+    backdrop-filter: blur(5px);
+}
+
+.floating-back:active {
+    transform: scale(0.9);
+    background: rgba(255, 175, 189, 0.1);
+}
+
+.login-box {
+    width: 85%; 
+    max-width: 350px;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(15px);
+    padding: 40px 30px; 
+    border-radius: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+    text-align: center;
+}
+
+.login-header h2 { 
+    color: #ffafbd; 
+    margin-bottom: 8px; 
+    font-size: 1.8rem;
+}
+
+.login-header p {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 30px;
+}
+
+input {
+    width: 100%; 
+    padding: 18px; 
+    margin: 10px 0;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px; 
+    box-sizing: border-box;
+    font-size: 1rem; 
+    color: white;
+    transition: 0.3s;
+}
+
+input::placeholder { color: #555; }
+
+input:focus { 
+    outline: none; 
+    border-color: #ffafbd; 
+    background: rgba(255, 175, 189, 0.05);
+}
+
+.login-btn {
+    width: 100%; 
+    padding: 18px;
+    background: #ffafbd; 
+    color: #4a2c31; /* Darker brown-pink text for better legibility */
+    border: none; 
+    border-radius: 20px; 
+    font-weight: 700;
+    font-size: 1.1rem; 
+    margin-top: 20px;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(255, 175, 189, 0.2);
+    transition: 0.3s;
+}
+
+.login-btn:active {
+    transform: scale(0.97);
+    box-shadow: 0 5px 10px rgba(255, 175, 189, 0.1);
+}
+
+.signup-btn {
+    width: 100%; 
+    background: none; 
+    border: none;
+    color: #666; 
+    margin-top: 25px; 
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.signup-btn:hover {
+    color: #ffafbd;
+}
+
+.toggle-text {
+    margin-top: 25px;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+#toggle-link {
+    color: #ffafbd;
+    text-decoration: none;
+    font-weight: 700;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+#toggle-link:hover {
+    text-decoration: underline;
+}
+
+/* Signup button ko hide karne ki zaroorat nahi, hum button ka text change karenge */

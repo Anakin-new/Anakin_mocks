@@ -1,0 +1,109 @@
+html {
+    background-color: #121412; /* Matches your body color */
+}
+
+body {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+body {
+    background: #121412;
+    font-family: 'Quicksand', sans-serif;
+    color: white;
+    margin: 0;
+    padding: 20px;
+}
+
+.result-container {
+    max-width: 450px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.score-header {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.score-circle {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    background: rgba(255, 175, 189, 0.1);
+    border: 4px solid #ffafbd;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 15px;
+    box-shadow: 0 0 30px rgba(255, 175, 189, 0.2);
+}
+
+.score-circle h1 { font-size: 2.5rem; margin: 0; color: #ffafbd; }
+.score-circle p { margin: 0; font-size: 0.9rem; color: #888; }
+
+.stats-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.stat-card {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 15px;
+    border-radius: 20px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.stat-card.correct .stat-val { color: #a8d5a2; }
+.stat-card.wrong .stat-val { color: #ff8fa3; }
+.stat-val { font-size: 1.5rem; font-weight: 700; display: block; }
+.stat-label { font-size: 0.8rem; color: #666; text-transform: uppercase; }
+
+/* Review Items */
+.review-card {
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-left: 5px solid transparent;
+}
+
+.review-card.is-correct { border-left-color: #a8d5a2; }
+.review-card.is-wrong { border-left-color: #ff8fa3; }
+
+.review-card p { font-size: 0.95rem; line-height: 1.5; margin-top: 0; }
+
+.answer-box {
+    font-size: 0.85rem;
+    padding: 10px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.correct-ans { color: #a8d5a2; font-weight: 600; }
+.explanation {
+    margin-top: 10px;
+    font-size: 0.8rem;
+    color: #888;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 10px;
+}
+
+.home-btn {
+    width: 100%;
+    padding: 18px;
+    background: #ffafbd;
+    border: none;
+    border-radius: 20px;
+    font-weight: 700;
+    cursor: pointer;
+}

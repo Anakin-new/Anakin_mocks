@@ -1,0 +1,32 @@
+body {
+    margin: 0; padding: 0;
+    background: radial-gradient(circle at top right, #1d201d, #121412);
+    font-family: 'Quicksand', sans-serif;
+    display: flex; justify-content: center; align-items: center; height: 100vh;
+    color: #e0e0e0;
+}
+.mobile-container { width: 100%; max-width: 400px; padding: 25px; text-align: center; }
+
+.brand {
+    font-family: 'Dancing Script', cursive;
+    color: #ffafbd; font-size: 3.5rem; margin-bottom: 10px;
+    filter: drop-shadow(0 0 10px rgba(255, 175, 189, 0.3));
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(15px);
+    padding: 40px 30px; border-radius: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+.welcome-text { color: #b0b0b0; font-size: 1rem; line-height: 1.6; margin-bottom: 30px; }
+
+.primary-btn {
+    background: #ffafbd; color: #4a2c31; border: none; 
+    width: 100%; padding: 18px; border-radius: 20px;
+    font-size: 1.1rem; font-weight: 700; cursor: pointer;
+    transition: all 0.3s ease;
+}
+.primary-btn:active { transform: scale(0.97); }
