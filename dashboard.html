@@ -19,7 +19,7 @@
         <nav class="drawer-links">
             <a href="selection.html"><span>📝</span> &nbsp; Mock Tests</a>
             <a href="leaderboard.html"><span>🏆</span> &nbsp; Leaderboard</a>
-            <a href="notes.html"><span>📖</span> &nbsp; Study Notes</a>
+            <a href="docs.html"><span>📖</span> &nbsp; App Guide</a> <a href="notes.html"><span>📖</span> &nbsp; Study Notes</a>
             <a href="profile.html"><span>💂‍♀️</span> &nbsp; My Profile</a>
             <hr>
             <button class="drawer-exit" onclick="handleLogout()">Log out</button>
@@ -34,12 +34,23 @@
                 <h1>Hello, <span id="username-display">Warrior</span> 🌿</h1>
             </div>
             <div class="header-spacer"></div> 
+            <a href="docs.html" style="text-decoration:none; font-size: 1.4rem;">📖</a>
         </header>
 
         <div class="glass-card score-screen">
             <div class="card-tag">Latest Result</div>
             <span class="big-score" id="last-score">--</span>
-            <p id="last-mock-name">Keep growing!</p>
+            <p id="last-mock-name" style="margin-bottom: 15px;">Keep growing!</p>
+            
+            <div class="xp-container" style="width: 100%; margin-top: 10px; text-align: left;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
+                    <span id="rank-title" style="font-size: 0.75rem; color: #ffafbd; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">Aspirant Sprout 🌱</span>
+                    <span id="xp-display" style="font-size: 0.75rem; color: #a8d5a2; font-weight: 700;">0 XP</span>
+                </div>
+                <div style="width: 100%; height: 6px; background: rgba(255,255,255,0.05); border-radius: 10px; overflow: hidden;">
+                    <div id="xp-bar" style="width: 0%; height: 100%; background: linear-gradient(90deg, #ffafbd, #a8d5a2); transition: width 1s ease-in-out;"></div>
+                </div>
+            </div>
         </div>
 
         <div class="motivation-panel">
@@ -52,12 +63,12 @@
         <div class="announcement-panel">
             <div class="panel-header">
                 <div class="updates-header">
-    <h3>SSC Updates</h3>
-    <div class="live-tag">
-        <span class="red-dot"></span>
-        LIVE
-    </div>
-</div>
+                    <h3>SSC Updates</h3>
+                    <div class="live-tag">
+                        <span class="red-dot"></span>
+                        LIVE
+                    </div>
+                </div>
             </div>
             <div id="ssc-news" class="news-content">
                 <p class="news-item">Checking for updates... ⏳</p>

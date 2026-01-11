@@ -23,7 +23,7 @@ function displayNotes(notesList) {
     grid.innerHTML = '';
 
     if (notesList.length === 0) {
-        grid.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: #888; margin-top: 20px;">No materials found here yet... 🌿</p>`;
+        grid.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: #888; margin-top: 20px;">They will be added soon... 🌿</p>`;
         return;
     }
 

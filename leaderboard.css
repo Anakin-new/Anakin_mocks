@@ -1,0 +1,157 @@
+/* --- GLOBAL RESET & THEME --- */
+body {
+    background: #121412;
+    font-family: 'Quicksand', sans-serif;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    color: white;
+    overflow-x: hidden;
+}
+
+/* --- THE MAIN WRAPPER --- */
+.leaderboard-wrapper {
+    width: 92%; /* Small gap on sides for mobile */
+    max-width: 500px; /* Centered column for desktop */
+    padding-bottom: 100px;
+}
+
+#leaderboard-list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* --- PREMIUM CARD DESIGN --- */
+.topper-card {
+    width: 100%;
+    box-sizing: border-box; /* Critical for full width */
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(10px);
+    border-radius: 18px;
+    padding: 16px;
+    transition: transform 0.2s ease;
+    animation: slideIn 0.4s ease-out;
+}
+
+.topper-card:active {
+    transform: scale(0.98); /* Touch feedback for mobile */
+}
+
+.card-main {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* --- RANKING NUMBERS --- */
+.rank-num {
+    font-size: 1.4rem;
+    font-weight: 800;
+    width: 35px;
+    text-align: center;
+    color: #444;
+}
+
+.rank-1 .rank-num { color: #ffd700; }
+.rank-2 .rank-num { color: #c0c0c0; }
+.rank-3 .rank-num { color: #cd7f32; }
+
+/* --- USER INFO --- */
+.user-info {
+    flex: 1;
+}
+
+.topper-name {
+    font-weight: 700;
+    color: #ffffff;
+    font-size: 1.1rem;
+    margin-bottom: 2px;
+}
+
+.topper-title {
+    font-size: 0.65rem;
+    color: #ffafbd; /* Your Pink Accent */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+/* --- XP STYLING --- */
+.xp-side {
+    text-align: right;
+}
+
+.xp-value {
+    color: #a8d5a2; /* Your Green Accent */
+    font-weight: 800;
+    font-size: 1.2rem;
+}
+
+.xp-label {
+    font-size: 0.55rem;
+    color: #666;
+    font-weight: 700;
+}
+
+/* --- PERSONAL BEST MINI-CARD --- */
+.best-score-badge {
+    margin-top: 15px;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 10px 14px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.best-score-badge span:first-child {
+    font-size: 0.75rem;
+    color: #888;
+}
+
+.best-score-val {
+    color: #ffc3a0;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+/* --- ANIMATION --- */
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- DESKTOP ADJUSTMENT --- */
+@media (min-width: 600px) {
+    .leaderboard-wrapper {
+        width: 500px;
+    }
+}
+
+
+
+/* Glowing Name */
+.admin-card .topper-name {
+    color: #ff4444 !important;
+    font-weight: 800;
+    
+}
+
+/* System Badge Styling */
+.admin-badge {
+    background: #ff4444;
+    color: white;
+    font-size: 0.65rem;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-left: 10px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-shadow: none;
+}
+

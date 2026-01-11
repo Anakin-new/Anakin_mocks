@@ -28,13 +28,12 @@ async function initExam() {
 
     allQuestions = data;
     
-    // Timer Logic based on Mock Type
     if (savedMock.toLowerCase().includes("full")) {
         timeLeft = 60 * 60; 
         document.getElementById('subject-tabs').style.display = 'flex';
         switchSection('Maths'); 
     } else {
-        timeLeft = 15 * 60; // Short mocks usually 15 mins
+        timeLeft = 15 * 60; 
         document.getElementById('subject-tabs').style.display = 'none';
         filteredQuestions = allQuestions; 
         displayQuestion();
@@ -79,9 +78,24 @@ function displayQuestion() {
         container.appendChild(btn);
     });
 
+    if (userAnswers[q.id] !== undefined) {
+        const clearBtn = document.createElement('button');
+        clearBtn.className = 'clear-response-btn';
+        clearBtn.innerText = 'Clear Response';
+        clearBtn.onclick = clearResponse;
+        container.appendChild(clearBtn);
+    }
+
     document.getElementById('prev-btn').style.visibility = (currentIndex === 0) ? "hidden" : "visible";
     const nextBtn = document.getElementById('next-btn');
     nextBtn.innerText = (currentIndex === filteredQuestions.length - 1) ? "Review Map" : "Save & Next";
+}
+
+function clearResponse() {
+    const q = filteredQuestions[currentIndex];
+    delete userAnswers[q.id]; 
+    displayQuestion();
+    updatePalette();
 }
 
 function nextQuestion() {
@@ -142,7 +156,7 @@ function startTimer() {
     }, 1000);
 }
 
-// --- REAL SSC LOGIC START ---
+// --- UPDATED SUBMIT TEST WITH XP LOGIC ---
 async function submitTest(force = false) {
     if (!force && !confirm("Khatam karna hai? Soch lo, Inspector Sahiba!")) return; 
     clearInterval(timerInterval);
@@ -170,7 +184,6 @@ async function submitTest(force = false) {
         };
     });
 
-    // SSC Marking: +2 for correct, -0.5 for wrong
     const finalScore = (correctCount * 2) - (wrongCount * 0.5);
     const totalPossible = allQuestions.length * 2;
     const accuracy = correctCount + wrongCount > 0 
@@ -190,24 +203,63 @@ async function submitTest(force = false) {
     try {
         const { data: { user } } = await supabaseClient.auth.getUser();
         if (user) {
-            await supabaseClient.from('mock_scores').insert([{
-                user_id: user.id,
-                score: finalScore,
-                total: totalPossible,
-                subject: localStorage.getItem('selectedMock'),
-                correct_count: correctCount,
-                wrong_count: wrongCount
-            }]);
+            console.log("Saving results for user:", user.id);
+
+            // 1. Save the Mock Score (ADED AWAIT HERE)
+            const { error: scoreError } = await supabaseClient
+                .from('mock_scores')
+                .insert([{
+                    user_id: user.id,
+                    score: parseFloat(finalScore), // Ensure it's a number
+                    total: totalPossible,
+                    subject: localStorage.getItem('selectedMock'),
+                    correct_count: correctCount,
+                    wrong_count: wrongCount
+                }]);
+
+            if (scoreError) throw scoreError;
+
+            // 2. XP CALCULATION & UPDATE
+            const xpToGain = Math.max(0, Math.floor(finalScore * 10)); 
+            
+            // Fetch current XP (AWAIT already here, good)
+            const { data: profile } = await supabaseClient
+                .from('profiles')
+                .select('xp')
+                .eq('id', user.id)
+                .single();
+
+            const currentXP = profile?.xp || 0;
+            const updatedXP = currentXP + xpToGain;
+
+            // Update Profiles table (ADDED AWAIT HERE)
+            const { error: xpError } = await supabaseClient
+                .from('profiles')
+                .update({ xp: updatedXP })
+                .eq('id', user.id);
+
+            if (xpError) throw xpError;
+            
+            resultSummary.xpGained = xpToGain;
+            resultSummary.totalXP = updatedXP;
+            
+            console.log("Database updated successfully!");
         }
+        
         localStorage.setItem('lastQuizResult', JSON.stringify(resultSummary));
         localStorage.removeItem('selectedMock');
-        window.location.href = "result.html";
+        
+        // Final safety: small delay to ensure DB confirms
+        setTimeout(() => {
+            window.location.href = "result.html";
+        }, 500);
+
     } catch (err) { 
+        console.error("Submission Error Details:", err);
         localStorage.setItem('lastQuizResult', JSON.stringify(resultSummary));
         window.location.href = "result.html"; 
     }
 }
-// --- REAL SSC LOGIC END ---
 
 function exitTest() {
     if (confirm("Chhod kar ja rahi ho? SSC clear nahi hoga aise!")) {

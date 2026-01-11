@@ -1,42 +1,64 @@
 const SUPABASE_URL = "https://eewezmljxaqbjcuzzwmq.supabase.co";
-const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVld2V6bWxqeGFxYmpjdXp6d21xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njc4NDE4NDksImV4cCI6MjA4MzQxNzg0OX0.qIqB5A5qiCxmq1SHPhlm1QGn1objoPvywf0JYFCebtQ"; // Use your existing key
+const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVld2V6bWxqeGFxYmpjdXp6d21xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njc4NDE4NDksImV4cCI6MjA4MzQxNzg0OX0.qIqB5A5qiCxmq1SHPhlm1QGn1objoPvywf0JYFCebtQ"; 
 const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 async function initDashboard() {
-    const { data: { user }, error } = await supabaseClient.auth.getUser();
+    const { data: { session }, error: sessionError } = await supabaseClient.auth.getSession();
 
-    if (error || !user) {
+    if (sessionError || !session) {
         window.location.href = "login.html";
         return;
     }
 
-    // --- New Profile Logic Starts ---
+    const user = session.user;
+
     try {
-        const { data: profile, error: profileError } = await supabaseClient
+        const { data: profile } = await supabaseClient
             .from('profiles')
-            .select('username')
+            .select('username, xp')
             .eq('id', user.id)
             .single();
 
         let finalName = "";
         if (profile && profile.username) {
-            // Agar profile table mein name mil gaya
             finalName = profile.username;
         } else {
-            // Fallback: Agar profile nahi mila toh email use karein
             const rawUsername = user.email.split('@')[0];
             finalName = rawUsername.charAt(0).toUpperCase() + rawUsername.slice(1);
         }
-        
         document.getElementById('username-display').innerText = finalName;
+
+        // Update XP UI with the new Military Ranks
+        updateXPUI(profile?.xp || 0);
+
     } catch (err) {
         console.error("Profile fetch error:", err);
     }
-    // --- New Profile Logic Ends ---
 
     showLatestScore(user.id);
     loadSSCNews();
     displayRandomQuote();
+}
+
+// --- UPDATED: Military Hierarchy Logic ---
+function updateXPUI(xp) {
+    const xpElement = document.getElementById('xp-display');
+    const barElement = document.getElementById('xp-bar');
+    const titleElement = document.getElementById('rank-title');
+
+    if (xpElement) xpElement.innerText = `${xp} XP`;
+    
+    // Progress calculation (Updated Max XP to 10,000 for a longer journey)
+    const progress = Math.min((xp / 10000) * 100, 100);
+    if (barElement) barElement.style.width = `${progress}%`;
+
+    if (titleElement) {
+        if (xp >= 6001) titleElement.innerText = "Field Marshal 👑";
+        else if (xp >= 3001) titleElement.innerText = "Major General 🦅";
+        else if (xp >= 1501) titleElement.innerText = "Lieutenant ⚔️";
+        else if (xp >= 501)  titleElement.innerText = "Sergeant 🎖️";
+        else titleElement.innerText = "Private (Recruit) 🪖";
+    }
 }
 
 async function showLatestScore(userId) {
@@ -46,11 +68,6 @@ async function showLatestScore(userId) {
         .eq('user_id', userId)
         .order('created_at', { ascending: false })
         .limit(1);
-
-    if (error) {
-        document.getElementById('last-mock-name').innerText = "Sync Error.";
-        return;
-    }
 
     const scoreEl = document.getElementById('last-score');
     const nameEl = document.getElementById('last-mock-name');
@@ -68,17 +85,13 @@ async function showLatestScore(userId) {
 async function loadSSCNews() {
     const newsBox = document.getElementById('ssc-news');
     try {
-        const { data, error } = await supabaseClient
+        const { data } = await supabaseClient
             .from('announcements')
             .select('*')
             .order('created_at', { ascending: false });
 
-        if (error) return;
-
         if (data && data.length > 0) {
-            newsBox.innerHTML = data.map(item => `
-                <p class="news-item">📌 ${item.content}</p>
-            `).join('');
+            newsBox.innerHTML = data.map(item => `<p class="news-item">📌 ${item.content}</p>`).join('');
         } else {
             newsBox.innerHTML = '<p class="news-item">No new updates today.</p>';
         }
@@ -101,6 +114,7 @@ function displayRandomQuote() {
 function toggleMenu() {
     const sideDrawer = document.getElementById('side-drawer');
     const overlay = document.getElementById('overlay');
+    if(!sideDrawer || !overlay) return;
     const currentLeft = window.getComputedStyle(sideDrawer).left;
 
     if (currentLeft === '0px') {

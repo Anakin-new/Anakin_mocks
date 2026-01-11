@@ -163,3 +163,23 @@ body {
 .legend { display: flex; flex-wrap: wrap; gap: 15px; margin-bottom: 15px; font-size: 0.8rem; color: #888; }
 .legend span { display: flex; align-items: center; }
 .legend .dot { height: 12px; width: 12px; margin-right: 6px; }
+
+.clear-response-btn {
+    background: transparent;
+    border: none;
+    color: #ff8fa3;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-decoration: underline;
+    cursor: pointer;
+    margin-top: 5px;
+    padding: 10px;
+    width: fit-content;
+    align-self: flex-end;
+}
+
+/* Update options container to handle alignment */
+.options-vertical {
+    display: flex;
+    flex-direction: column;
+}

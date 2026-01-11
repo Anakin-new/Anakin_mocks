@@ -1,4 +1,4 @@
-const cacheName = 'sayli-v2'; // Version badal diya hai
+const cacheName = 'sayli-v3'; // Version badal diya hai
 const assets = [
   '/',
   '/index.html',

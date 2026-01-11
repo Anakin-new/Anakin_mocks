@@ -1,0 +1,101 @@
+/* --- DOCUMENTATION SPECIFIC STYLES --- */
+
+.leaderboard-wrapper {
+    padding-top: 10px;
+    padding-bottom: 50px;
+}
+
+/* Section Containers */
+.doc-section {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 24px;
+    margin-bottom: 20px;
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Typography */
+.doc-section h2 {
+    color: #ffafbd; /* Your Pink Accent */
+    font-size: 1.25rem;
+    margin-top: 0;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.doc-section p {
+    color: #ccc;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+/* Tables for XP & Ranks */
+.xp-table {
+    width: 100%;
+    margin-top: 15px;
+    border-collapse: collapse;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    overflow: hidden; /* Rounds the table corners */
+}
+
+.xp-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    font-size: 0.85rem;
+    color: #eee;
+}
+
+.xp-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* Highlighting Values */
+.highlight {
+    color: #a8d5a2; /* Your Green Accent */
+    font-weight: 700;
+    font-family: 'monospace';
+}
+
+/* Feature List (Bulleted) */
+.rules-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.rules-list li {
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 10px;
+    color: #bbb;
+    font-size: 0.9rem;
+}
+
+.rules-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: #ffafbd;
+    font-weight: bold;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive Tweak */
+@media (max-width: 480px) {
+    .doc-section {
+        padding: 18px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+}
