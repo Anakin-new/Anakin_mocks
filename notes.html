@@ -2,38 +2,55 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="google" content="notranslate">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Study Garden - Notes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Study Garden</title>
     <link rel="stylesheet" href="notes.css">
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
-<body class="dark-mode">
-    <div class="notes-wrapper">
-        <header class="notes-header">
-            <button onclick="window.location.href='dashboard.html'">←</button>
-            <h1>Study Garden 🌸</h1>
-        </header>
-
-        <div class="filter-bar">
-            <button class="filter-btn active" onclick="filterNotes('all')">All</button>
-            <button class="filter-btn" onclick="filterNotes('pdf')">PDFs</button>
-            <button class="filter-btn" onclick="filterNotes('video')">Videos</button>
-        </div>
-
-        <div class="notes-grid" id="notes-grid">
-            </div>
+<body class="mobile-ui">
+    <div class="app-container">
+        <header class="mobile-header">
+    <div class="header-top">
+        <button class="icon-btn" onclick="window.location.href='dashboard.html'">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        </button>
+        <h1>Study Garden</h1>
     </div>
-    <div id="video-modal" class="video-modal">
-    <div class="modal-content">
-        <button class="close-modal" onclick="closeVideo()">✕ Close</button>
-        <div class="video-container">
-            <iframe id="youtube-player" src="" frameborder="0" allowfullscreen></iframe>
+    
+    <div class="scroll-chips-container">
+        <div class="chips-wrapper" id="main-chips">
+            <button class="chip" onclick="handleMainFilter('maths', this)">Maths</button>
+            <button class="chip" onclick="handleMainFilter('gs', this)">GS</button>
+            <button class="chip" onclick="handleMainFilter('english', this)">English</button>
+            <button class="chip" onclick="handleMainFilter('reasoning', this)">Reasoning</button>
         </div>
-        <h3 id="modal-title">Lecture Title</h3>
-          </div>
-       </div>
+    </div>
+
+    <div class="scroll-chips-container sub-chips" id="sub-chips-container" style="display:none;">
+        <div class="chips-wrapper secondary" id="sub-filter-bar"></div>
+    </div>
+</header>
+        <main class="content-area">
+            <div id="notes-grid" class="notes-list">
+                </div>
+        </main>
+    </div>
+
+    <div id="video-modal" class="video-overlay">
+        <div class="bottom-sheet">
+            <div class="drag-handle"></div>
+            <div class="video-player-wrapper">
+                <iframe id="youtube-player" src="" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="sheet-info">
+                <h3 id="modal-title">Lecture</h3>
+                <button class="close-sheet" onclick="closeVideo()">Close Player</button>
+            </div>
+        </div>
+    </div>
+
     <script src="notes.js"></script>
 </body>
 </html>

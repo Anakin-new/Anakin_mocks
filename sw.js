@@ -1,4 +1,4 @@
-const cacheName = 'sayli-v4'; // Version badal diya hai
+const cacheName = 'sayli-v3'; // Version badal diya hai
 const assets = [
   '/',
   '/index.html',
@@ -36,5 +36,4 @@ self.addEventListener('fetch', e => {
       return caches.match(e.request);
     })
   );
-
 });
